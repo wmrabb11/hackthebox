@@ -1,2 +1,20 @@
 # ![alt text](https://www.hackthebox.eu/badge/image/111403 "Hackthebox badge")
-## This is for hackthebox writeups (as they become no longer active)
+## Welcome to my hackthebox writeups!
+
+### Note: I will not post a writeup for a machine until it is no longer active
+
+#### You can check it out yourself here: https://hackthebox.eu
+
+## User owns:
+ - SwagShop
+ - LaCasaDePapel
+ - Jarvis
+ - Luke
+ - Haystack
+ 
+ ## Root owns:
+ - SwagShop
+ - LaCasaDePapel
+ - Jarvis
+ - Luke
+ - Haystack
