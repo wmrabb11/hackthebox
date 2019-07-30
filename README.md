@@ -9,6 +9,7 @@ Note: I will not post a writeup for a machine until it is no longer active
  - Jarvis
  - Luke
  - Haystack
+ - Writeup
  
  ## Root owns:
  - SwagShop
@@ -16,3 +17,4 @@ Note: I will not post a writeup for a machine until it is no longer active
  - Jarvis
  - Luke
  - Haystack
+ - Writeup
