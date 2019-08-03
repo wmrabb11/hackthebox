@@ -11,6 +11,7 @@ Note: I will not post a writeup for a machine until it is no longer active
  - Haystack
  - Writeup
  - Craft
+ - Ellingson
  
  ## Root owns:
  - SwagShop
@@ -20,3 +21,4 @@ Note: I will not post a writeup for a machine until it is no longer active
  - Haystack
  - Writeup
  - Craft
+ - Ellingson
