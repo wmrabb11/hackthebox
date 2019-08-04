@@ -12,6 +12,7 @@ Note: I will not post a writeup for a machine until it is no longer active
  - Writeup
  - Craft
  - Ellingson
+ - Safe
  
  ## Root owns:
  - SwagShop
@@ -22,3 +23,4 @@ Note: I will not post a writeup for a machine until it is no longer active
  - Writeup
  - Craft
  - Ellingson
+ - Safe
