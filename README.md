@@ -25,3 +25,4 @@ Note: I will not post a writeup for a machine until it is no longer active
  - Craft
  - Ellingson
  - Safe
+ - Bastion
