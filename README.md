@@ -14,6 +14,7 @@ Note: I will not post a writeup for a machine until it is no longer active
  - Ellingson
  - Safe
  - Bastion
+ - Onetwoseven
  
  ## Root owns:
  - SwagShop
