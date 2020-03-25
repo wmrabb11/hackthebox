@@ -1,0 +1,30 @@
+GRANTEE,IS_GRANTABLE,TABLE_CATALOG,PRIVILEGE_TYPE
+'DBadmin'@'localhost',NO,def,SELECT
+'DBadmin'@'localhost',NO,def,INSERT
+'DBadmin'@'localhost',NO,def,UPDATE
+'DBadmin'@'localhost',NO,def,DELETE
+'DBadmin'@'localhost',NO,def,CREATE
+'DBadmin'@'localhost',NO,def,DROP
+'DBadmin'@'localhost',NO,def,RELOAD
+'DBadmin'@'localhost',NO,def,SHUTDOWN
+'DBadmin'@'localhost',NO,def,PROCESS
+'DBadmin'@'localhost',NO,def,FILE
+'DBadmin'@'localhost',NO,def,REFERENCES
+'DBadmin'@'localhost',NO,def,INDEX
+'DBadmin'@'localhost',NO,def,ALTER
+'DBadmin'@'localhost',NO,def,SHOW DATABASES
+'DBadmin'@'localhost',NO,def,SUPER
+'DBadmin'@'localhost',NO,def,CREATE TEMPORARY TABLES
+'DBadmin'@'localhost',NO,def,LOCK TABLES
+'DBadmin'@'localhost',NO,def,EXECUTE
+'DBadmin'@'localhost',NO,def,REPLICATION SLAVE
+'DBadmin'@'localhost',NO,def,REPLICATION CLIENT
+'DBadmin'@'localhost',NO,def,CREATE VIEW
+'DBadmin'@'localhost',NO,def,SHOW VIEW
+'DBadmin'@'localhost',NO,def,CREATE ROUTINE
+'DBadmin'@'localhost',NO,def,ALTER ROUTINE
+'DBadmin'@'localhost',NO,def,CREATE USER
+'DBadmin'@'localhost',NO,def,EVENT
+'DBadmin'@'localhost',NO,def,TRIGGER
+'DBadmin'@'localhost',NO,def,CREATE TABLESPACE
+

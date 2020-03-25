@@ -1,0 +1,2 @@
+blocking_trx_id,blocking_lock_id,requesting_trx_id,requested_lock_id
+

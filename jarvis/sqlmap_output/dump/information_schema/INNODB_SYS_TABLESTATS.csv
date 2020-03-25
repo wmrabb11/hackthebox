@@ -1,0 +1,10 @@
+TABLE_ID,NAME,AUTOINC,NUM_ROWS,REF_COUNT,MODIFIED_COUNTER,OTHER_INDEX_SIZE,CLUST_INDEX_SIZE,STATS_INITIALIZED
+14,SYS_DATAFILES,0,0,0,0,0,0,Uninitialized
+11,SYS_FOREIGN,0,0,0,0,0,0,Uninitialized
+12,SYS_FOREIGN_COLS,0,0,0,0,0,0,Uninitialized
+13,SYS_TABLESPACES,0,0,0,0,0,0,Uninitialized
+18,hotel/room,7,6,2,0,0,1,Initialized
+17,mysql/gtid_slave_pos,0,0,1,0,0,1,Initialized
+16,mysql/innodb_index_stats,0,7,1,0,0,1,Initialized
+15,mysql/innodb_table_stats,0,2,1,0,0,1,Initialized
+

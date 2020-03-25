@@ -1,0 +1,2 @@
+lock_id,lock_trx_id,lock_rec,lock_mode,lock_type,lock_page,lock_data,lock_space,lock_index,lock_table
+

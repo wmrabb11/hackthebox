@@ -1,0 +1,1 @@
+2019/07/29 22:50:29 CMD: UID=0    PID=2541   | sh -c /usr/bin/env -i PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin run-parts --lsbsysinit /etc/update-motd.d > /run/motd.dynamic.new 

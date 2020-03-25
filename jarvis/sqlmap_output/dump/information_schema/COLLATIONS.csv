@@ -1,0 +1,14 @@
+ID,SORTLEN,IS_DEFAULT,IS_COMPILED,COLLATION_NAME,CHARACTER_SET_NAME
+1,1,Yes,Yes,big5_chinese_ci,big5
+84,1,<blank>,Yes,big5_bin,big5
+3,1,Yes,Yes,dec8_swedish_ci,dec8
+69,1,<blank>,Yes,dec8_bin,dec8
+4,1,Yes,Yes,cp850_general_ci,cp850
+80,1,<blank>,Yes,cp850_bin,cp850
+6,1,Yes,Yes,hp8_english_ci,hp8
+72,1,<blank>,Yes,hp8_bin,hp8
+7,1,Yes,Yes,koi8r_general_ci,koi8r
+74,1,<blank>,Yes,koi8r_bin,koi8r
+5,1,<blank>,Yes,latin1_german1_ci,latin1
+8,1,Yes,Yes,latin1_swedish_ci,latin1
+

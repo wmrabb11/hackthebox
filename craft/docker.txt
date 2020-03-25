@@ -1,0 +1,47 @@
+*code*
+
+---FIRST CMD---
+/opt/app # echo '#!/usr/bin/env python
+> import pymysql
+> from craft_api import settings
+> connection = pymysql.connect(host=settings.MYSQL_DATABASE_HOST,
+> 			       user=settings.MYSQL_DATABASE_USER,
+> 			       password=settings.MYSQL_DATABASE_PASSWORD,
+> 			       db=settings.MYSQL_DATABASE_DB,
+> 			       cursorclass=pymysql.cursors.DictCursor)
+> try:
+> 	with connection.cursor() as cursor:
+> 		sql = "show tables;"
+> 		cursor.execute(sql)
+> 		result = cursor.fetchall()
+> 		print(result)
+> finally:
+> 	connection.close()
+> ' > test.py
+/opt/app # python test.py
+
+---FIRST RESULT---
+[{'Tables_in_craft': 'brew'}, {'Tables_in_craft': 'user'}]
+
+---SECOND CMD---
+/opt/app # echo '#!/usr/bin/env python
+> import pymysql
+> from craft_api import settings
+> connection = pymysql.connect(host=settings.MYSQL_DATABASE_HOST,
+> 			       user=settings.MYSQL_DATABASE_USER,
+> 			       password=settings.MYSQL_DATABASE_PASSWORD,
+> 			       db=settings.MYSQL_DATABASE_DB,
+> 			       cursorclass=pymysql.cursors.DictCursor)
+> try:
+> 	with connection.cursor() as cursor:
+> 		sql = "SELECT * FROM user"
+> 		cursor.execute(sql)
+> 		result = cursor.fetchall()
+> 		print(result)
+> finally:
+> 	connection.close()
+> ' > test.py
+
+
+---SECOND RESULT---
+[{'id': 1, 'username': 'dinesh', 'password': '4aUh0A8PbVJxgd'}, {'id': 4, 'username': 'ebachman', 'password': 'llJ77D8QFkLPQB'}, {'id': 5, 'username': 'gilfoyle', 'password': 'ZEU3N8WNM2rh4T'}]

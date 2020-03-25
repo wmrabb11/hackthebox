@@ -1,0 +1,230 @@
+{
+  "name": "haystack",
+  "uuid": "51742f69-629e-431a-9d5f-baa88450dd0d",
+  "version": {
+    "number": "6.4.2",
+    "build_hash": "33b5de37d73763319101b4ed11a6bd44f6ea03b5",
+    "build_number": 18010,
+    "build_snapshot": false
+  },
+  "status": {
+    "overall": {
+      "state": "green",
+      "title": "Green",
+      "nickname": "Looking good",
+      "icon": "success",
+      "since": "2019-07-23T20:31:47.318Z"
+    },
+    "statuses": [
+      {
+        "id": "plugin:kibana@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:31:47.318Z"
+      },
+      {
+        "id": "plugin:elasticsearch@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:33:48.924Z"
+      },
+      {
+        "id": "plugin:xpack_main@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:33:50.056Z"
+      },
+      {
+        "id": "plugin:searchprofiler@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:33:50.056Z"
+      },
+      {
+        "id": "plugin:ml@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:33:50.057Z"
+      },
+      {
+        "id": "plugin:tilemap@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:33:50.057Z"
+      },
+      {
+        "id": "plugin:watcher@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:33:50.058Z"
+      },
+      {
+        "id": "plugin:license_management@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:31:47.771Z"
+      },
+      {
+        "id": "plugin:index_management@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:33:50.058Z"
+      },
+      {
+        "id": "plugin:timelion@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:31:48.260Z"
+      },
+      {
+        "id": "plugin:graph@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:33:50.059Z"
+      },
+      {
+        "id": "plugin:monitoring@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:31:48.277Z"
+      },
+      {
+        "id": "plugin:security@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:33:50.063Z"
+      },
+      {
+        "id": "plugin:grokdebugger@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:33:50.059Z"
+      },
+      {
+        "id": "plugin:dashboard_mode@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:31:48.311Z"
+      },
+      {
+        "id": "plugin:logstash@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:33:50.060Z"
+      },
+      {
+        "id": "plugin:apm@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:31:48.339Z"
+      },
+      {
+        "id": "plugin:console@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:31:48.343Z"
+      },
+      {
+        "id": "plugin:console_extensions@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:31:48.345Z"
+      },
+      {
+        "id": "plugin:notifications@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:31:48.348Z"
+      },
+      {
+        "id": "plugin:metrics@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:31:48.352Z"
+      },
+      {
+        "id": "plugin:reporting@6.4.2",
+        "state": "green",
+        "icon": "success",
+        "message": "Ready",
+        "since": "2019-07-23T20:33:50.060Z"
+      }
+    ]
+  },
+  "metrics": {
+    "last_updated": "2019-07-24T03:41:41.517Z",
+    "collection_interval_in_millis": 5000,
+    "process": {
+      "memory": {
+        "heap": {
+          "total_in_bytes": 155996160,
+          "used_in_bytes": 129055528,
+          "size_limit": 1501560832
+        },
+        "resident_set_size_in_bytes": 200437760
+      },
+      "event_loop_delay": 0.44307899847626686,
+      "pid": 6392,
+      "uptime_in_millis": 25830819
+    },
+    "os": {
+      "load": {
+        "1m": 0.09033203125,
+        "5m": 0.11767578125,
+        "15m": 0.0810546875
+      },
+      "memory": {
+        "total_in_bytes": 3954233344,
+        "free_in_bytes": 1069363200,
+        "used_in_bytes": 2884870144
+      },
+      "uptime_in_millis": 25854000,
+      "cgroup": {
+        "cpuacct": {
+          "control_group": "/",
+          "usage_nanos": 687350842887
+        },
+        "cpu": {
+          "control_group": "/",
+          "cfs_period_micros": 100000,
+          "cfs_quota_micros": -1,
+          "stat": {
+            "number_of_elapsed_periods": 0,
+            "number_of_times_throttled": 0,
+            "time_throttled_nanos": 0
+          }
+        }
+      }
+    },
+    "response_times": {
+      "max_in_millis": 0
+    },
+    "requests": {
+      "total": 0,
+      "disconnects": 0,
+      "status_codes": {}
+    },
+    "concurrent_connections": 0
+  }
+}

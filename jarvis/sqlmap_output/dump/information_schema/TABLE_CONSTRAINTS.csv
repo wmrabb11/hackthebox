@@ -1,0 +1,34 @@
+TABLE_NAME,TABLE_SCHEMA,CONSTRAINT_TYPE,CONSTRAINT_NAME,CONSTRAINT_SCHEMA,CONSTRAINT_CATALOG
+room,hotel,PRIMARY KEY,PRIMARY,hotel,def
+column_stats,mysql,PRIMARY KEY,PRIMARY,mysql,def
+columns_priv,mysql,PRIMARY KEY,PRIMARY,mysql,def
+db,mysql,PRIMARY KEY,PRIMARY,mysql,def
+event,mysql,PRIMARY KEY,PRIMARY,mysql,def
+func,mysql,PRIMARY KEY,PRIMARY,mysql,def
+gtid_slave_pos,mysql,PRIMARY KEY,PRIMARY,mysql,def
+help_category,mysql,PRIMARY KEY,PRIMARY,mysql,def
+help_category,mysql,UNIQUE,name,mysql,def
+help_keyword,mysql,PRIMARY KEY,PRIMARY,mysql,def
+help_keyword,mysql,UNIQUE,name,mysql,def
+help_relation,mysql,PRIMARY KEY,PRIMARY,mysql,def
+help_topic,mysql,PRIMARY KEY,PRIMARY,mysql,def
+help_topic,mysql,UNIQUE,name,mysql,def
+host,mysql,PRIMARY KEY,PRIMARY,mysql,def
+index_stats,mysql,PRIMARY KEY,PRIMARY,mysql,def
+innodb_index_stats,mysql,PRIMARY KEY,PRIMARY,mysql,def
+innodb_table_stats,mysql,PRIMARY KEY,PRIMARY,mysql,def
+plugin,mysql,PRIMARY KEY,PRIMARY,mysql,def
+proc,mysql,PRIMARY KEY,PRIMARY,mysql,def
+procs_priv,mysql,PRIMARY KEY,PRIMARY,mysql,def
+proxies_priv,mysql,PRIMARY KEY,PRIMARY,mysql,def
+roles_mapping,mysql,UNIQUE,Host,mysql,def
+servers,mysql,PRIMARY KEY,PRIMARY,mysql,def
+table_stats,mysql,PRIMARY KEY,PRIMARY,mysql,def
+tables_priv,mysql,PRIMARY KEY,PRIMARY,mysql,def
+time_zone,mysql,PRIMARY KEY,PRIMARY,mysql,def
+time_zone_leap_second,mysql,PRIMARY KEY,PRIMARY,mysql,def
+time_zone_name,mysql,PRIMARY KEY,PRIMARY,mysql,def
+time_zone_transition,mysql,PRIMARY KEY,PRIMARY,mysql,def
+time_zone_transition_type,mysql,PRIMARY KEY,PRIMARY,mysql,def
+user,mysql,PRIMARY KEY,PRIMARY,mysql,def
+

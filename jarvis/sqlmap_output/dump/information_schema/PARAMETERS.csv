@@ -1,0 +1,11 @@
+DTD_IDENTIFIER,DATA_TYPE,ROUTINE_TYPE,SPECIFIC_NAME,NUMERIC_SCALE,PARAMETER_NAME,PARAMETER_MODE,COLLATION_NAME,SPECIFIC_SCHEMA,ORDINAL_POSITION,SPECIFIC_CATALOG,NUMERIC_PRECISION,CHARACTER_SET_NAME,DATETIME_PRECISION,CHARACTER_OCTET_LENGTH,CHARACTER_MAXIMUM_LENGTH
+varchar(64),varchar,PROCEDURE,AddGeometryColumn,NULL,catalog,IN,utf8mb4_general_ci,mysql,1,def,NULL,utf8mb4,NULL,256,64
+varchar(64),varchar,PROCEDURE,AddGeometryColumn,NULL,t_schema,IN,utf8mb4_general_ci,mysql,2,def,NULL,utf8mb4,NULL,256,64
+varchar(64),varchar,PROCEDURE,AddGeometryColumn,NULL,t_name,IN,utf8mb4_general_ci,mysql,3,def,NULL,utf8mb4,NULL,256,64
+varchar(64),varchar,PROCEDURE,AddGeometryColumn,NULL,geometry_column,IN,utf8mb4_general_ci,mysql,4,def,NULL,utf8mb4,NULL,256,64
+int(11),int,PROCEDURE,AddGeometryColumn,0,t_srid,IN,NULL,mysql,5,def,10,NULL,NULL,NULL,NULL
+varchar(64),varchar,PROCEDURE,DropGeometryColumn,NULL,catalog,IN,utf8mb4_general_ci,mysql,1,def,NULL,utf8mb4,NULL,256,64
+varchar(64),varchar,PROCEDURE,DropGeometryColumn,NULL,t_schema,IN,utf8mb4_general_ci,mysql,2,def,NULL,utf8mb4,NULL,256,64
+varchar(64),varchar,PROCEDURE,DropGeometryColumn,NULL,t_name,IN,utf8mb4_general_ci,mysql,3,def,NULL,utf8mb4,NULL,256,64
+varchar(64),varchar,PROCEDURE,DropGeometryColumn,NULL,geometry_column,IN,utf8mb4_general_ci,mysql,4,def,NULL,utf8mb4,NULL,256,64
+

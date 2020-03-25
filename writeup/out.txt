@@ -1,0 +1,7 @@
+salt: 5a599ef579066807
+username: jkr
+email: jkr@writeup.htb
+password: 62def4866937f08cc13bab43bb14e6f7
+
+decrypted pass: [salt=5a599ef579066807]raykayjay9
+  - Used for ssh to user

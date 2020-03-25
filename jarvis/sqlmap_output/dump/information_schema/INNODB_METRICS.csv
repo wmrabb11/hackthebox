@@ -1,0 +1,245 @@
+TYPE,NAME,STATUS,COMMENT,COUNT,AVG_COUNT,MAX_COUNT,SUBSYSTEM,MIN_COUNT,TIME_RESET,COUNT_RESET,TIME_ELAPSED,TIME_ENABLED,TIME_DISABLED,MIN_COUNT_RESET,MAX_COUNT_RESET,AVG_COUNT_RESET
+counter,metadata_table_handles_opened,disabled,Number of table handles opened,0,NULL,NULL,metadata,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,metadata_table_handles_closed,disabled,Number of table handles closed,0,NULL,NULL,metadata,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,metadata_table_reference_count,disabled,Table reference counter,0,NULL,NULL,metadata,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+value,metadata_mem_pool_size,enabled,Size of a memory pool InnoDB uses to store data dictionary and internal data structures in bytes,8388608,NULL,8388608,metadata,8388608,NULL,8388608,18186,2019-07-18 17:14:05,NULL,8388608,8388608,NULL
+counter,lock_deadlocks,enabled,Number of deadlocks,0,0,NULL,lock,NULL,NULL,0,18186,2019-07-18 17:14:05,NULL,NULL,NULL,NULL
+counter,lock_timeouts,enabled,Number of lock timeouts,0,0,NULL,lock,NULL,NULL,0,18187,2019-07-18 17:14:05,NULL,NULL,NULL,NULL
+counter,lock_rec_lock_waits,disabled,Number of times enqueued into record lock wait queue,0,NULL,NULL,lock,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,lock_table_lock_waits,disabled,Number of times enqueued into table lock wait queue,0,NULL,NULL,lock,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,lock_rec_lock_requests,disabled,Number of record locks requested,0,NULL,NULL,lock,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,lock_rec_lock_created,disabled,Number of record locks created,0,NULL,NULL,lock,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,lock_rec_lock_removed,disabled,Number of record locks removed from the lock queue,0,NULL,NULL,lock,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,lock_rec_locks,disabled,Current number of record locks on tables,0,NULL,NULL,lock,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,lock_table_lock_created,disabled,Number of table locks created,0,NULL,NULL,lock,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,lock_table_lock_removed,disabled,Number of table locks removed from the lock queue,0,NULL,NULL,lock,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,lock_table_locks,disabled,Current number of table locks on tables,0,NULL,NULL,lock,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+status_counter,lock_row_lock_current_waits,enabled,Number of row locks currently being waited for (innodb_row_lock_current_waits),0,0,0,lock,NULL,NULL,0,18188,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,lock_row_lock_time,enabled,"Time spent in acquiring row locks, in milliseconds (innodb_row_lock_time)",0,0,0,lock,NULL,NULL,0,18188,2019-07-18 17:14:05,NULL,NULL,0,NULL
+value,lock_row_lock_time_max,enabled,"The maximum time to acquire a row lock, in milliseconds (innodb_row_lock_time_max)",0,NULL,0,lock,0,NULL,0,18188,2019-07-18 17:14:05,NULL,0,0,NULL
+status_counter,lock_row_lock_waits,enabled,Number of times a row lock had to be waited for (innodb_row_lock_waits),0,0,0,lock,NULL,NULL,0,18188,2019-07-18 17:14:05,NULL,NULL,0,NULL
+value,lock_row_lock_time_avg,enabled,"The average time to acquire a row lock, in milliseconds (innodb_row_lock_time_avg)",0,NULL,0,lock,0,NULL,0,18188,2019-07-18 17:14:05,NULL,0,0,NULL
+value,buffer_pool_size,enabled,Server buffer pool size (all buffer pools) in bytes,134217728,NULL,134217728,server,134217728,NULL,134217728,18188,2019-07-18 17:14:05,NULL,134217728,134217728,NULL
+status_counter,buffer_pool_reads,enabled,Number of reads directly from disk (innodb_buffer_pool_reads),197,0.010831317352100286,197,buffer,NULL,NULL,197,18188,2019-07-18 17:14:05,NULL,NULL,197,NULL
+status_counter,buffer_pool_read_requests,enabled,Number of logical read requests (innodb_buffer_pool_read_requests),12988,0.7140972069496371,12988,buffer,NULL,NULL,12988,18188,2019-07-18 17:14:05,NULL,NULL,12988,NULL
+status_counter,buffer_pool_write_requests,enabled,Number of write requests (innodb_buffer_pool_write_requests),19,0.0010445873879817472,19,buffer,NULL,NULL,19,18189,2019-07-18 17:14:05,NULL,NULL,19,NULL
+status_counter,buffer_pool_wait_free,enabled,Number of times waited for free buffer (innodb_buffer_pool_wait_free),0,0,0,buffer,NULL,NULL,0,18189,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,buffer_pool_read_ahead,enabled,Number of pages read as read ahead (innodb_buffer_pool_read_ahead),0,0,0,buffer,NULL,NULL,0,18189,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,buffer_pool_read_ahead_evicted,enabled,Read-ahead pages evicted without being accessed (innodb_buffer_pool_read_ahead_evicted),0,0,0,buffer,NULL,NULL,0,18189,2019-07-18 17:14:05,NULL,NULL,0,NULL
+value,buffer_pool_pages_total,enabled,Total buffer pool size in pages (innodb_buffer_pool_pages_total),8191,NULL,8191,buffer,8191,NULL,8191,18189,2019-07-18 17:14:05,NULL,8191,8191,NULL
+value,buffer_pool_pages_misc,enabled,Buffer pages for misc use such as row locks or the adaptive hash index (innodb_buffer_pool_pages_misc),1,NULL,1,buffer,1,NULL,1,18189,2019-07-18 17:14:05,NULL,1,1,NULL
+value,buffer_pool_pages_data,enabled,Buffer pages containing data (innodb_buffer_pool_pages_data),196,NULL,196,buffer,196,NULL,196,18189,2019-07-18 17:14:05,NULL,196,196,NULL
+value,buffer_pool_bytes_data,enabled,Buffer bytes containing data (innodb_buffer_pool_bytes_data),3211264,NULL,3211264,buffer,3211264,NULL,3211264,18190,2019-07-18 17:14:05,NULL,3211264,3211264,NULL
+value,buffer_pool_pages_dirty,enabled,Buffer pages currently dirty (innodb_buffer_pool_pages_dirty),0,NULL,0,buffer,0,NULL,0,18190,2019-07-18 17:14:05,NULL,0,0,NULL
+value,buffer_pool_bytes_dirty,enabled,Buffer bytes currently dirty (innodb_buffer_pool_bytes_dirty),0,NULL,0,buffer,0,NULL,0,18190,2019-07-18 17:14:05,NULL,0,0,NULL
+value,buffer_pool_pages_free,enabled,Buffer pages currently free (innodb_buffer_pool_pages_free),7994,NULL,7994,buffer,7994,NULL,7994,18190,2019-07-18 17:14:05,NULL,7994,7994,NULL
+status_counter,buffer_pages_created,enabled,Number of pages created (innodb_pages_created),0,0,0,buffer,NULL,NULL,0,18190,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,buffer_pages_written,enabled,Number of pages written (innodb_pages_written),19,0.0010445299615173171,19,buffer,NULL,NULL,19,18190,2019-07-18 17:14:05,NULL,NULL,19,NULL
+status_counter,buffer_index_pages_written,enabled,Number of index pages written (innodb_index_pages_written),0,0,0,buffer,NULL,NULL,0,18190,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,buffer_non_index_pages_written,enabled,Number of non index pages written (innodb_non_index_pages_written),77,0.004233095107201759,77,buffer,NULL,NULL,77,18190,2019-07-18 17:14:05,NULL,NULL,77,NULL
+status_counter,buffer_pages_read,enabled,Number of pages read (innodb_pages_read),196,0.010775151181968114,196,buffer,NULL,NULL,196,18190,2019-07-18 17:14:05,NULL,NULL,196,NULL
+status_counter,buffer_pages0_read,enabled,Number of page 0 read (innodb_pages0_read),5,0.0002748611950964763,5,buffer,NULL,NULL,5,18191,2019-07-18 17:14:05,NULL,NULL,5,NULL
+status_counter,buffer_index_sec_rec_cluster_reads,enabled,Number of secondary record reads triggered cluster read,0,0,0,buffer,NULL,NULL,0,18191,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,buffer_index_sec_rec_cluster_reads_avoided,enabled,Number of secondary record reads avoided triggering cluster read,0,0,0,buffer,NULL,NULL,0,18191,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,buffer_data_reads,enabled,Amount of data read in bytes (innodb_data_reads),3297792,181.28701005991974,3297792,buffer,NULL,NULL,3297792,18191,2019-07-18 17:14:05,NULL,NULL,3297792,NULL
+status_counter,buffer_data_written,enabled,Amount of data written in bytes (innodb_data_written),642560,35.32296190423836,642560,buffer,NULL,NULL,642560,18191,2019-07-18 17:14:05,NULL,NULL,642560,NULL
+set_owner,buffer_flush_batch_scanned,disabled,Total pages scanned as part of flush batch,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_flush_batch_num_scan,disabled,Number of times buffer flush list flush is called,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_flush_batch_scanned_per_call,disabled,Pages scanned per flush batch scan,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_flush_batch_rescan,disabled,Number of times rescan of flush list forced,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_owner,buffer_flush_batch_total_pages,disabled,Total pages flushed as part of flush batch,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_flush_batches,disabled,Number of flush batches,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_flush_batch_pages,disabled,Pages queued as a flush batch,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_owner,buffer_flush_neighbor_total_pages,disabled,Total neighbors flushed as part of neighbor flush,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_flush_neighbor,disabled,Number of times neighbors flushing is invoked,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_flush_neighbor_pages,disabled,Pages queued as a neighbor batch,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_flush_n_to_flush_requested,disabled,Number of pages requested for flushing.,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_flush_avg_page_rate,disabled,Average number of pages at which flushing is happening,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_flush_lsn_avg_rate,disabled,Average redo generation rate,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_flush_pct_for_dirty,disabled,Percent of IO capacity used to avoid max dirty page limit,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_flush_pct_for_lsn,disabled,Percent of IO capacity used to avoid reusable redo space limit,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_flush_sync_waits,disabled,Number of times a wait happens due to sync flushing,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_owner,buffer_flush_adaptive_total_pages,disabled,Total pages flushed as part of adaptive flushing,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_flush_adaptive,disabled,Number of adaptive batches,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_flush_adaptive_pages,disabled,Pages queued as an adaptive batch,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_owner,buffer_flush_sync_total_pages,disabled,Total pages flushed as part of sync batches,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_flush_sync,disabled,Number of sync batches,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_flush_sync_pages,disabled,Pages queued as a sync batch,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_owner,buffer_flush_background_total_pages,disabled,Total pages flushed as part of background batches,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_flush_background,disabled,Number of background batches,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_flush_background_pages,disabled,Pages queued as a background batch,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_owner,buffer_LRU_batch_scanned,disabled,Total pages scanned as part of LRU batch,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_LRU_batch_num_scan,disabled,Number of times LRU batch is called,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_LRU_batch_scanned_per_call,disabled,Pages scanned per LRU batch call,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_owner,buffer_LRU_batch_flush_total_pages,disabled,Total pages flushed as part of LRU batches,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_LRU_batches_flush,disabled,Number of LRU batches,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_LRU_batch_flush_pages,disabled,Pages queued as an LRU batch,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_owner,buffer_LRU_batch_evict_total_pages,disabled,Total pages evicted as part of LRU batches,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_LRU_batches_evict,disabled,Number of LRU batches,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_LRU_batch_evict_pages,disabled,Pages queued as an LRU batch,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_owner,buffer_LRU_single_flush_scanned,disabled,Total pages scanned as part of single page LRU flush,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_LRU_single_flush_num_scan,disabled,Number of times single page LRU flush is called,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_LRU_single_flush_scanned_per_call,disabled,Page scanned per single LRU flush,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_LRU_single_flush_failure_count,disabled,Number of times attempt to flush a single page from LRU failed,0,NULL,NULL,Buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_LRU_get_free_search,disabled,Number of searches performed for a clean page,0,NULL,NULL,Buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_owner,buffer_LRU_search_scanned,disabled,Total pages scanned as part of LRU search,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_LRU_search_num_scan,disabled,Number of times LRU search is performed,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_LRU_search_scanned_per_call,disabled,Page scanned per single LRU search,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_owner,buffer_LRU_unzip_search_scanned,disabled,Total pages scanned as part of LRU unzip search,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_LRU_unzip_search_num_scan,disabled,Number of times LRU unzip search is performed,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+set_member,buffer_LRU_unzip_search_scanned_per_call,disabled,Page scanned per single LRU unzip search,0,NULL,NULL,buffer,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_read_index_leaf,disabled,Number of Index Leaf Pages read,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_read_index_non_leaf,disabled,Number of Index Non-leaf Pages read,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_read_index_ibuf_leaf,disabled,Number of Insert Buffer Index Leaf Pages read,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_read_index_ibuf_non_leaf,disabled,Number of Insert Buffer Index Non-Leaf Pages read,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_read_undo_log,disabled,Number of Undo Log Pages read,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_read_index_inode,disabled,Number of Index Inode Pages read,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_read_ibuf_free_list,disabled,Number of Insert Buffer Free List Pages read,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_read_ibuf_bitmap,disabled,Number of Insert Buffer Bitmap Pages read,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_read_system_page,disabled,Number of System Pages read,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_read_trx_system,disabled,Number of Transaction System Pages read,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_read_fsp_hdr,disabled,Number of File Space Header Pages read,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_read_xdes,disabled,Number of Extent Descriptor Pages read,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_read_blob,disabled,Number of Uncompressed BLOB Pages read,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_read_zblob,disabled,Number of First Compressed BLOB Pages read,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_read_zblob2,disabled,Number of Subsequent Compressed BLOB Pages read,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_read_other,disabled,Number of other/unknown (old version of InnoDB) Pages read,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_written_index_leaf,disabled,Number of Index Leaf Pages written,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_written_index_non_leaf,disabled,Number of Index Non-leaf Pages written,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_written_index_ibuf_leaf,disabled,Number of Insert Buffer Index Leaf Pages written,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_written_index_ibuf_non_leaf,disabled,Number of Insert Buffer Index Non-Leaf Pages written,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_written_undo_log,disabled,Number of Undo Log Pages written,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_written_index_inode,disabled,Number of Index Inode Pages written,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_written_ibuf_free_list,disabled,Number of Insert Buffer Free List Pages written,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_written_ibuf_bitmap,disabled,Number of Insert Buffer Bitmap Pages written,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_written_system_page,disabled,Number of System Pages written,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_written_trx_system,disabled,Number of Transaction System Pages written,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_written_fsp_hdr,disabled,Number of File Space Header Pages written,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_written_xdes,disabled,Number of Extent Descriptor Pages written,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_written_blob,disabled,Number of Uncompressed BLOB Pages written,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_written_zblob,disabled,Number of First Compressed BLOB Pages written,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_written_zblob2,disabled,Number of Subsequent Compressed BLOB Pages written,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,buffer_page_written_other,disabled,Number of other/unknown (old version InnoDB) Pages written,0,NULL,NULL,buffer_page_io,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+status_counter,os_data_reads,enabled,Number of reads initiated (innodb_data_reads),212,0.011647711664194276,212,os,NULL,NULL,212,18201,2019-07-18 17:14:05,NULL,NULL,212,NULL
+status_counter,os_data_writes,enabled,Number of writes initiated (innodb_data_writes),77,0.004230536783693204,77,os,NULL,NULL,77,18201,2019-07-18 17:14:05,NULL,NULL,77,NULL
+status_counter,os_data_fsyncs,enabled,Number of fsync() calls (innodb_data_fsyncs),77,0.004230536783693204,77,os,NULL,NULL,77,18201,2019-07-18 17:14:05,NULL,NULL,77,NULL
+counter,os_pending_reads,enabled,Number of reads pending,0,0,NULL,os,0,NULL,0,18201,2019-07-18 17:14:05,NULL,0,NULL,NULL
+counter,os_pending_writes,enabled,Number of writes pending,0,0,NULL,os,0,NULL,0,18201,2019-07-18 17:14:05,NULL,0,NULL,NULL
+status_counter,os_log_bytes_written,enabled,Bytes of log written (innodb_os_log_written),9728,0.5344761276852921,9728,os,NULL,NULL,9728,18201,2019-07-18 17:14:05,NULL,NULL,9728,NULL
+status_counter,os_log_fsyncs,enabled,Number of fsync log writes (innodb_os_log_fsyncs),39,0.002142621689924184,39,os,NULL,NULL,39,18202,2019-07-18 17:14:05,NULL,NULL,39,NULL
+status_counter,os_log_pending_fsyncs,enabled,Number of pending fsync write (innodb_os_log_pending_fsyncs),0,0,0,os,0,NULL,0,18202,2019-07-18 17:14:05,NULL,0,0,NULL
+status_counter,os_log_pending_writes,enabled,Number of pending log file writes (innodb_os_log_pending_writes),0,0,0,os,0,NULL,0,18202,2019-07-18 17:14:05,NULL,0,0,NULL
+counter,trx_rw_commits,disabled,Number of read-write transactions committed,0,NULL,NULL,transaction,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,trx_ro_commits,disabled,Number of read-only transactions committed,0,NULL,NULL,transaction,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,trx_nl_ro_commits,disabled,Number of non-locking auto-commit read-only transactions committed,0,NULL,NULL,transaction,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,trx_commits_insert_update,disabled,Number of transactions committed with inserts and updates,0,NULL,NULL,transaction,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,trx_rollbacks,disabled,Number of transactions rolled back,0,NULL,NULL,transaction,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,trx_rollbacks_savepoint,disabled,Number of transactions rolled back to savepoint,0,NULL,NULL,transaction,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,trx_rollback_active,disabled,Number of resurrected active transactions rolled back,0,NULL,NULL,transaction,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,trx_active_transactions,disabled,Number of active transactions,0,NULL,NULL,transaction,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+value,trx_rseg_history_len,enabled,Length of the TRX_RSEG_HISTORY list,27,NULL,27,transaction,27,NULL,27,18203,2019-07-18 17:14:05,NULL,27,27,NULL
+counter,trx_undo_slots_used,disabled,Number of undo slots used,0,NULL,NULL,transaction,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,trx_undo_slots_cached,disabled,Number of undo slots cached,0,NULL,NULL,transaction,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+value,trx_rseg_current_size,disabled,Current rollback segment size in pages,0,NULL,NULL,transaction,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,purge_del_mark_records,disabled,Number of delete-marked rows purged,0,NULL,NULL,purge,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,purge_upd_exist_or_extern_records,disabled,Number of purges on updates of existing records and  updates on delete marked record with externally stored field,0,NULL,NULL,purge,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,purge_invoked,disabled,Number of times purge was invoked,0,NULL,NULL,purge,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,purge_undo_log_pages,disabled,Number of undo log pages handled by the purge,0,NULL,NULL,purge,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+value,purge_dml_delay_usec,disabled,Microseconds DML to be delayed due to purge lagging,0,NULL,NULL,purge,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+value,purge_stop_count,disabled,Number of times purge was stopped,0,NULL,NULL,purge,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+value,purge_resume_count,disabled,Number of times purge was resumed,0,NULL,NULL,purge,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,log_checkpoints,disabled,Number of checkpoints,0,NULL,NULL,recovery,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+value,log_lsn_last_flush,disabled,LSN of Last flush,0,NULL,NULL,recovery,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+value,log_lsn_last_checkpoint,disabled,LSN at last checkpoint,0,NULL,NULL,recovery,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+value,log_lsn_current,disabled,Current LSN value,0,NULL,NULL,recovery,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,log_lsn_checkpoint_age,disabled,Current LSN value minus LSN at last checkpoint,0,NULL,NULL,recovery,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+value,log_lsn_buf_pool_oldest,disabled,The oldest modified block LSN in the buffer pool,0,NULL,NULL,recovery,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+value,log_max_modified_age_async,disabled,"Maximum LSN difference; when exceeded, start asynchronous preflush",0,NULL,NULL,recovery,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+value,log_max_modified_age_sync,disabled,"Maximum LSN difference; when exceeded, start synchronous preflush",0,NULL,NULL,recovery,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,log_pending_log_writes,disabled,Pending log writes,0,NULL,NULL,recovery,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,log_pending_checkpoint_writes,disabled,Pending checkpoints,0,NULL,NULL,recovery,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,log_num_log_io,disabled,Number of log I/Os,0,NULL,NULL,recovery,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+status_counter,log_waits,enabled,Number of log waits due to small log buffer (innodb_log_waits),0,0,0,recovery,NULL,NULL,0,18206,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,log_write_requests,enabled,Number of log write requests (innodb_log_write_requests),0,0,0,recovery,NULL,NULL,0,18206,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,log_writes,enabled,Number of log writes (innodb_log_writes),19,0.0010436119960452598,19,recovery,NULL,NULL,19,18206,2019-07-18 17:14:05,NULL,NULL,19,NULL
+counter,compress_pages_compressed,disabled,Number of pages compressed,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,compress_pages_decompressed,disabled,Number of pages decompressed,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,compression_pad_increments,disabled,Number of times padding is incremented to avoid compression failures,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,compression_pad_decrements,disabled,Number of times padding is decremented due to good compressibility,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,compress_saved,disabled,Number of bytes saved by page compression,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,compress_trim_sect512,disabled,Number of sect-512 TRIMed by page compression,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,compress_trim_sect1024,disabled,Number of sect-1024 TRIMed by page compression,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,compress_trim_sect2048,disabled,Number of sect-2048 TRIMed by page compression,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,compress_trim_sect4096,disabled,Number of sect-4K TRIMed by page compression,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,compress_trim_sect8192,disabled,Number of sect-8K TRIMed by page compression,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,compress_trim_sect16384,disabled,Number of sect-16K TRIMed by page compression,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,compress_trim_sect32768,disabled,Number of sect-32K TRIMed by page compression,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,compress_pages_page_compressed,disabled,Number of pages compressed by page compression,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,compress_page_compressed_trim_op,disabled,Number of TRIM operation performed by page compression,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,compress_page_compressed_trim_op_saved,disabled,Number of TRIM operation saved by page compression,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,compress_pages_page_decompressed,disabled,Number of pages decompressed by page compression,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,compress_pages_page_compression_error,disabled,Number of page compression errors,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,compress_pages_encrypted,disabled,Number of pages encrypted,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,compress_pages_decrypted,disabled,Number of pages decrypted,0,NULL,NULL,compression,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,index_page_splits,disabled,Number of index page splits,0,NULL,NULL,index,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,index_page_merge_attempts,disabled,Number of index page merge attempts,0,NULL,NULL,index,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,index_page_merge_successful,disabled,Number of successful index page merges,0,NULL,NULL,index,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,index_page_reorg_attempts,disabled,Number of index page reorganization attempts,0,NULL,NULL,index,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,index_page_reorg_successful,disabled,Number of successful index page reorganizations,0,NULL,NULL,index,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,index_page_discards,disabled,Number of index pages discarded,0,NULL,NULL,index,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+status_counter,adaptive_hash_searches,enabled,Number of successful searches using Adaptive Hash Index,0,0,0,adaptive_hash_index,NULL,NULL,0,18209,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,adaptive_hash_searches_btree,enabled,Number of searches using B-tree on an index search,4999,0.27453457081662913,4999,adaptive_hash_index,NULL,NULL,4999,18209,2019-07-18 17:14:05,NULL,NULL,4999,NULL
+counter,adaptive_hash_pages_added,disabled,Number of index pages on which the Adaptive Hash Index is built,0,NULL,NULL,adaptive_hash_index,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,adaptive_hash_pages_removed,disabled,Number of index pages whose corresponding Adaptive Hash Index entries were removed,0,NULL,NULL,adaptive_hash_index,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,adaptive_hash_rows_added,disabled,Number of Adaptive Hash Index rows added,0,NULL,NULL,adaptive_hash_index,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,adaptive_hash_rows_removed,disabled,Number of Adaptive Hash Index rows removed,0,NULL,NULL,adaptive_hash_index,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,adaptive_hash_rows_deleted_no_hash_entry,disabled,Number of rows deleted that did not have corresponding Adaptive Hash Index entries,0,NULL,NULL,adaptive_hash_index,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,adaptive_hash_rows_updated,disabled,Number of Adaptive Hash Index rows updated,0,NULL,NULL,adaptive_hash_index,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+value,file_num_open_files,enabled,Number of files currently open (innodb_num_open_files),7,NULL,7,file_system,7,NULL,7,18210,2019-07-18 17:14:05,NULL,7,7,NULL
+status_counter,ibuf_merges_insert,enabled,Number of inserted records merged by change buffering,0,0,0,change_buffer,NULL,NULL,0,18210,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,ibuf_merges_delete_mark,enabled,Number of deleted records merged by change buffering,0,0,0,change_buffer,NULL,NULL,0,18210,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,ibuf_merges_delete,enabled,Number of purge records merged by change buffering,0,0,0,change_buffer,NULL,NULL,0,18210,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,ibuf_merges_discard_insert,enabled,Number of insert merged operations discarded,0,0,0,change_buffer,NULL,NULL,0,18211,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,ibuf_merges_discard_delete_mark,enabled,Number of deleted merged operations discarded,0,0,0,change_buffer,NULL,NULL,0,18211,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,ibuf_merges_discard_delete,enabled,Number of purge merged  operations discarded,0,0,0,change_buffer,NULL,NULL,0,18211,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,ibuf_merges,enabled,Number of change buffer merges,0,0,0,change_buffer,NULL,NULL,0,18211,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,ibuf_size,enabled,Change buffer size in pages,1,0.00005491186645434078,1,change_buffer,NULL,NULL,1,18211,2019-07-18 17:14:05,NULL,NULL,1,NULL
+counter,innodb_master_thread_sleeps,disabled,Number of times (seconds) master thread sleeps,0,NULL,NULL,server,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+status_counter,innodb_activity_count,enabled,Current server activity count,23,0.001262972928449838,23,server,NULL,NULL,23,18211,2019-07-18 17:14:05,NULL,NULL,23,NULL
+counter,innodb_master_active_loops,disabled,Number of times master thread performs its tasks when server is active,0,NULL,NULL,server,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,innodb_master_idle_loops,disabled,Number of times master thread performs its tasks when server is idle,0,NULL,NULL,server,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,innodb_background_drop_table_usec,disabled,Time (in microseconds) spent to process drop table list,0,NULL,NULL,server,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,innodb_ibuf_merge_usec,disabled,Time (in microseconds) spent to process change buffer merge,0,NULL,NULL,server,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,innodb_log_flush_usec,disabled,Time (in microseconds) spent to flush log records,0,NULL,NULL,server,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,innodb_mem_validate_usec,disabled,Time (in microseconds) spent to do memory validation,0,NULL,NULL,server,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,innodb_master_purge_usec,disabled,Time (in microseconds) spent by master thread to purge records,0,NULL,NULL,server,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,innodb_dict_lru_usec,disabled,Time (in microseconds) spent to process DICT LRU list,0,NULL,NULL,server,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,innodb_dict_lru_count_active,disabled,Number of tables evicted from DICT LRU list in the active loop,0,NULL,NULL,server,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,innodb_dict_lru_count_idle,disabled,Number of tables evicted from DICT LRU list in the idle loop,0,NULL,NULL,server,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,innodb_checkpoint_usec,disabled,Time (in microseconds) spent by master thread to do checkpoint,0,NULL,NULL,server,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+status_counter,innodb_dblwr_writes,enabled,Number of doublewrite operations that have been performed (innodb_dblwr_writes),20,0.0010981167298083786,20,server,NULL,NULL,20,18213,2019-07-18 17:14:05,NULL,NULL,20,NULL
+status_counter,innodb_dblwr_pages_written,enabled,Number of pages that have been written for doublewrite operations (innodb_dblwr_pages_written),20,0.0010981167298083786,20,server,NULL,NULL,20,18213,2019-07-18 17:14:05,NULL,NULL,20,NULL
+value,innodb_page_size,enabled,InnoDB page size in bytes (innodb_page_size),16384,NULL,16384,server,16384,NULL,16384,18213,2019-07-18 17:14:05,NULL,16384,16384,NULL
+status_counter,innodb_rwlock_s_spin_waits,enabled,Number of rwlock spin waits due to shared latch request,21,0.0011530225662987976,21,server,NULL,NULL,21,18213,2019-07-18 17:14:05,NULL,NULL,21,NULL
+status_counter,innodb_rwlock_x_spin_waits,enabled,Number of rwlock spin waits due to exclusive latch request,0,0,0,server,NULL,NULL,0,18213,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,innodb_rwlock_s_spin_rounds,enabled,Number of rwlock spin loop rounds due to shared latch request,630,0.034590676988963925,630,server,NULL,NULL,630,18213,2019-07-18 17:14:05,NULL,NULL,630,NULL
+status_counter,innodb_rwlock_x_spin_rounds,enabled,Number of rwlock spin loop rounds due to exclusive latch request,0,0,0,server,NULL,NULL,0,18214,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,innodb_rwlock_s_os_waits,enabled,Number of OS waits due to shared latch request,21,0.0011529592621060721,21,server,NULL,NULL,21,18214,2019-07-18 17:14:05,NULL,NULL,21,NULL
+status_counter,innodb_rwlock_x_os_waits,enabled,Number of OS waits due to exclusive latch request,0,0,0,server,NULL,NULL,0,18214,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,dml_reads,enabled,Number of rows read,442,0.02426704732623257,442,dml,NULL,NULL,442,18214,2019-07-18 17:14:05,NULL,NULL,442,NULL
+status_counter,dml_inserts,enabled,Number of rows inserted,0,0,0,dml,NULL,NULL,0,18214,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,dml_deletes,enabled,Number of rows deleted,0,0,0,dml,NULL,NULL,0,18214,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,dml_updates,enabled,Number of rows updated,0,0,0,dml,NULL,NULL,0,18214,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,dml_system_reads,enabled,Number of system rows read,0,0,0,dml,NULL,NULL,0,18214,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,dml_system_inserts,enabled,Number of system rows inserted,0,0,0,dml,NULL,NULL,0,18214,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,dml_system_deletes,enabled,Number of system rows deleted,0,0,0,dml,NULL,NULL,0,18214,2019-07-18 17:14:05,NULL,NULL,0,NULL
+status_counter,dml_system_updates,enabled,Number of system rows updated,0,0,0,dml,NULL,NULL,0,18214,2019-07-18 17:14:05,NULL,NULL,0,NULL
+counter,ddl_background_drop_indexes,disabled,Number of indexes waiting to be dropped after failed index creation,0,NULL,NULL,ddl,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,ddl_background_drop_tables,disabled,Number of tables in background drop table list,0,NULL,NULL,ddl,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,ddl_online_create_index,disabled,Number of indexes being created online,0,NULL,NULL,ddl,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,ddl_pending_alter_table,disabled,"Number of ALTER TABLE, CREATE INDEX, DROP INDEX in progress",0,NULL,NULL,ddl,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,icp_attempts,disabled,Number of attempts for index push-down condition checks,0,NULL,NULL,icp,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,icp_no_match,disabled,Index push-down condition does not match,0,NULL,NULL,icp,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,icp_out_of_range,disabled,Index push-down condition out of range,0,NULL,NULL,icp,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+counter,icp_match,disabled,Index push-down condition matches,0,NULL,NULL,icp,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL
+

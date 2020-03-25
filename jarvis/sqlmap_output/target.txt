@@ -1,0 +1,1 @@
+http://10.10.10.143/room.php?cod=1 (GET)  # ./sqlmap.py -u http://10.10.10.143/room.php?cod=1

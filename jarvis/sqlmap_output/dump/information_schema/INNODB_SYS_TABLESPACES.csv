@@ -1,0 +1,6 @@
+NAME,FLAG,SPACE,PAGE_SIZE,ROW_FORMAT,FILE_FORMAT,ZIP_PAGE_SIZE
+mysql/innodb_table_stats,0,1,16384,Compact or Redundant,Antelope,0
+mysql/innodb_index_stats,0,2,16384,Compact or Redundant,Antelope,0
+mysql/gtid_slave_pos,0,3,16384,Compact or Redundant,Antelope,0
+hotel/room,0,4,16384,Compact or Redundant,Antelope,0
+

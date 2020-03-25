@@ -2,36 +2,3 @@
 ## Welcome to my hackthebox writeups!
 Note: I will not post a writeup for a machine until it is no longer active
 <br>You can check it out yourself here: https://hackthebox.eu
-
-## User owns:
- - SwagShop
- - LaCasaDePapel
- - Jarvis
- - Luke
- - Haystack
- - Writeup
- - Craft
- - Ellingson
- - Safe
- - Bastion
- - Onetwoseven
- - Obscurity
- - Traceback
- - OpenAdmin
- - Traverxec
- 
- ## Root owns:
- - SwagShop
- - LaCasaDePapel
- - Jarvis
- - Luke
- - Haystack
- - Writeup
- - Craft
- - Ellingson
- - Safe
- - Bastion
- - Obscurity
- - Traceback
- - OpenAdmin
- - Traverxec

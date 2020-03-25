@@ -1,0 +1,6 @@
+SQL_PATH,SCHEMA_NAME,CATALOG_NAME,DEFAULT_COLLATION_NAME,DEFAULT_CHARACTER_SET_NAME
+NULL,hotel,def,utf8mb4_general_ci,utf8mb4
+NULL,information_schema,def,utf8_general_ci,utf8
+NULL,mysql,def,utf8mb4_general_ci,utf8mb4
+NULL,performance_schema,def,utf8_general_ci,utf8
+

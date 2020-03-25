@@ -1,0 +1,10 @@
+XA,ENGINE,COMMENT,SUPPORT,SAVEPOINTS,TRANSACTIONS
+NO,MRG_MyISAM,Collection of identical MyISAM tables,YES,NO,NO
+NO,CSV,Stores tables as CSV files,YES,NO,NO
+NO,MEMORY,"Hash based, stored in memory, useful for temporary tables",YES,NO,NO
+NO,MyISAM,Non-transactional engine with good performance and small data footprint,YES,NO,NO
+NO,SEQUENCE,Generated tables filled with sequential values,YES,YES,YES
+NO,Aria,Crash-safe tables with MyISAM heritage,YES,NO,NO
+NO,PERFORMANCE_SCHEMA,Performance Schema,YES,NO,NO
+YES,InnoDB,"Percona-XtraDB, Supports transactions, row-level locking, foreign keys and encryption for tables",DEFAULT,YES,YES
+
