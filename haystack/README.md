@@ -1,4 +1,4 @@
-user:
+# user:
   - enum directory for nmap and gobuster scans
   - download image and look at extra data: gave a hint
   - use elasticsearch to find full database 
@@ -6,7 +6,7 @@ user:
   - ssh into as security
   - user pwned
 
-root:
+# root:
   - Reverse js shell in /tmp
   - https://github.com/mpgn/CVE-2018-17246 
   - use curl with '' to exploit cve from security user with reverse shell

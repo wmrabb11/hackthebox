@@ -1,4 +1,4 @@
-user:
+# user:
   - Enumerate (nmap.txt)
   - SQLi on rooms.php
   - sqlmap to dump db
@@ -12,7 +12,7 @@ user:
     - Enter an IP: $(bash ../html/shell.sh)
   - user pwned
 
-root:
+# root:
   - Add ssh keys to pepper
   - Upload pspy64
   - systemctl GTFO bins

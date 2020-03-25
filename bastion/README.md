@@ -1,4 +1,4 @@
-user:
+# user:
   - Enumeration (nmap.txt)
   - SMBclient to look at files
   - Mount /Backups locally (sudo mount -t cifs //10.10.10.134/Backups ~/hackthebox/bastion/mount -o username=guest)
@@ -10,7 +10,7 @@ user:
   - SSH in
   - user pwned
 
-admin:
+# admin:
   - Enumeration
   - found mremoteng
   - research

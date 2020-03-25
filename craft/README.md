@@ -1,4 +1,4 @@
-user:
+# user:
   - enumeration (nmap.txt)
   - /etc/hosts for api, gogs, and db.craft.htb
   - interact.py
@@ -9,7 +9,7 @@ user:
   - ssh private key found so use that to ssh in
   - user pwned
 
-root:
+# root:
   - found token from gogs (token.txt)
   - read up on how to login and the features
   - ssh is interesting

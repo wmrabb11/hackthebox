@@ -1,4 +1,4 @@
-user:
+# user:
   - Enumerate website
   - Index used on /articles/#
   - Invalid index -> error message
@@ -16,7 +16,7 @@ user:
   - SSH in as margo
   - user pwned
 
-root:
+# root:
   - Enumeration (with LinEnum)
   - Unusual binary (garbage) in /usr/bin with setuid bit
   - exp.py

@@ -1,8 +1,8 @@
-user:
+# user:
   - Enumeration (nmap.txt)
   - Robots.txt -> writeup folder
   - Wappalyzer -> cms made simple
-  - Page with input (index.php?page=*)
+  - Page with input (index.php?page=_some number_)
   - Look for SQLi/LFI on /writeup/ -> no bruteforcing with gobuster or sqlmap -> blocked
     - CMSMS indicated SQL
   - Found cve.py on exploit-db (unauthenticated)
@@ -12,7 +12,7 @@ user:
   - SSH creds
   - user pwned
 
-root:
+# root:
   - Upload a pspy
   - Some sort of cleanup script (no access) as a cronjob
   - Notice permissions on /usr/local/ for "staff" group -> id shows that jkr is apart of that group

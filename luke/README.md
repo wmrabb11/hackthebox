@@ -1,4 +1,4 @@
-user & root:
+# user & root:
   - standard nmap/gobuster/nikto scans
   - nikto found config.php and login.php
   - use creds in login.php to get a jwt token to login to api and get an API token

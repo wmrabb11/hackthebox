@@ -1,4 +1,4 @@
-user:
+# user:
   - Enumerate (nmap.txt)
   - Web Server default apache page
   - Comment on HTML page telling you how to download binary
@@ -6,7 +6,7 @@ user:
   - exploit.py
   - user pwned
 
-root:
+# root:
   - Grab MyPasswords file
   - Do some research on keepass
   - keepass2john
