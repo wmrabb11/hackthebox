@@ -15,6 +15,10 @@ Note: I will not post a writeup for a machine until it is no longer active
  - Safe
  - Bastion
  - Onetwoseven
+ - Obscurity
+ - Traceback
+ - OpenAdmin
+ - Traverxec
  
  ## Root owns:
  - SwagShop
@@ -27,3 +31,7 @@ Note: I will not post a writeup for a machine until it is no longer active
  - Ellingson
  - Safe
  - Bastion
+ - Obscurity
+ - Traceback
+ - OpenAdmin
+ - Traverxec
