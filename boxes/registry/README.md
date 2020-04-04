@@ -1,0 +1,69 @@
+# user:
+  - nmap/nmap.txt for initial scans
+  - looks like http and https are the same (.bash_history is forbidden on both; both show the nginx welcome message)
+  - dirb found '/install/' which just looks like bytes
+  - wget to download locally -> run 'file' on it -> 'gzip compressed data'
+  - 'gzip -d install.gz' -> 'unexpected end of file'
+  - google this error and use 'zcat install.gz > install.raw'
+  - 'file' on install.raw -> tar archive
+  - use 'tar xvf install.raw' -> install directory (ca.crt and readme.md)
+  - ca.crt is a PEM certificate, readme contains links to 'Private Docker Registry'
+  - Read docs -> looks like running a registry (ran nmap/nmap_full.txt to see if there was a registry port; there's not)
+    - The registry is on port 443 (Reading the docs linked in the readme.md and did some research on docker external registries)
+  - Follow docs on how to setup client connection
+    - just adding ca.crt to /etc/docker/docker.registry.htb
+    - then running 'update-ca-certificates'
+    - then restarting docker locally
+  - add 'docker.registry.htb' to /etc/hosts
+  - 'docker login docker.registry.htb'
+  - auth failed -> need creds
+  - after hours of reading docs/etc, just tried out the username/password and it was just "admin:admin"
+  - log into API on website (docker.registry.htb/v2/\_catalog) -> "bolt-image"
+  - 'docker pull docker.registry.htb/bolt-image' -> 'docker run -it docker.registry.htb/bolt-image'
+    - found sync.sh in /var/www/html
+    - uses private key located in docker image
+    - use docker cp to grab the private key locally (root\_docker directory here)
+    - ssh config file shows this private key is used for user 'bolt'
+    - private key has a passphrase
+    - Tried ssh2john and john, but to no result
+    - look at '.viminfo' in /root directory, notice it modifying a file called '01-ssh.sh' in the /etc/profile.d/ directory
+    - look at that file -> found passphrase to the key! (root\_docker/passphrase here)
+  - ssh in as bolt
+  - user pwned
+
+# root:
+  - found 'backup.php' in /var/www/html
+  - uses a tool called 'restic'
+  - www-data has access to more interesting stuff than I do (like .bash\_history, bolt directory which contains .htaccess file)
+  - looks like we need to get a shell as www-data first
+  - /bolt on the web page -> need to do some digging on the bolt code (bolt directory here)
+    - found database file in the bolt code in /var/www/html/bolt (bolt.db)
+  - found a login page after a good bit of digging (/bolt/bolt/login)
+  - that bolt.db file came in handy, look at users table to grab username and password hash
+  - john to crack that hash -> 'strawberry'
+  - Now on the bolt dashboard
+  - found 'File Management' tab, try to upload a reverse shell?
+  - Only allow some file types (JS, HTML, image, not PHP)
+  - Can access the uploaded file from /bolt/files/*reverse_shell*
+  - Can edit the allowed types with Configuration -> Main Configuration -> Add "php" to array on line 240
+  - The files get deleted regularly (within ~1-2 mins)
+  - PHP reverse shell back to server, rather than local (server has netcat on it)
+    - Seems like some sort of firewall blocking outgoing connections
+  - www-data shell!
+  - sudo -l = '/usr/bin/restic backup -r rest\*'
+  - restic is a backup program
+    - that 'backup.php' found earlier was interesting. It showed us how to backup to a rest API
+    - maybe create own API to host on the server and send root backup there
+    - Nope! Grab the rest-server binary from the GitHub page (https://github.com/restic/rest-server/releases)
+  - Sftp that onto the box and run it as bolt
+    - [AS BOLT] Make a restic repo as bolt in /tmp with 'restic -r /tmp/repo init'
+    - [AS BOLT] './rest-server --path /tmp'
+    - [AS www-data] run 'sudo restic backup -r rest:http://localhost:8000/repo /root'
+  - this will make a backup of /root in bolt's restic repo
+  - once that's done, use 'restic -r /tmp/repo snapshots' to get the ID of the snapshot
+  - make a new directory '/tmp/restore'
+  - 'restic -r repo restory *ID* --target /tmp/restore/'
+  - Now go into that directory and it has a copy of '/root/' that you can read!
+  - cat out root.txt
+  - for extra 1337 points, copy that .ssh/id\_rsa over to local and SSH in as root so you can show off your 'id' command proving your leg!tness
+  - root pwned
