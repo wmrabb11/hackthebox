@@ -1,0 +1,18 @@
+user:
+  - nmap.txt
+  - port 80 is forbidden, dirb found 'server-status', also forbidden
+  - dirb found index.php and server-status.php on HTTPS -> also forbidden
+  - HTTPS is a google-like search engine that doesn't return anything
+  - Analytics page found
+  - 'Save' button in top left -> report.json
+  - Can connect to remote/local JSON/CSV
+  - Can upload a JSON/CSV
+  - add 'mango.htb' to /etc/hosts -> visit analytics page and it gives you an error message with the key (key.txt)
+  - look at source code of page (analytics.php)
+    - All data is hard-coded in a <script> tag
+    - Look at source of flexmonkey key, pull that file locally -> it's the same as the key from the error message
+  - user pwned
+
+root:
+  - 
+  - root pwned

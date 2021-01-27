@@ -1,0 +1,9 @@
+SMB:
+  - c.smith:xRxRxPANCAK3SxRxRx
+
+HQK:
+  - DEBUG:WBQ201953D8w
+
+LDAP:
+  - Administrator:yyEq0Uvvhq2uQOcWG8peLoeRQehqip/fKdeG/kjEVb4=
+  - Administrator:XtH4nkS4Pl4y1nGX

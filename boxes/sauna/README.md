@@ -1,0 +1,39 @@
+# user:
+  - nmap directory for initial scans
+  - LDAP, SMB, HTTP, DNS
+  - enum4linux to find 'enum.txt'
+    - Domain Name: EGOTISTICALBANK 
+  - Can't enumerate users with anonymous RPC, not much else in there
+  - No open shares to anonymous
+  - LDAPSearch doesn't return anything to interesting
+  - Kerberos is running -> kerbrute to enumerate users?
+  - ```python kerbrute.py -dc-ip 10.10.10.175 -users /usr/share/wordlists/statistically-likely-usersnames/jsmith.txt -domain EGOTISTICALBANK```
+  - Found users:
+    - hsmith
+    - fsmith [NOT PREAUTH]
+  - Now that we have users, use GetNPUsers.py to get a hash
+    - ```python GetNPUsers.py egotisticalbank/fsmith -format john```
+  - Got a hash -> now use john to crack the hash
+  - Hash cracked to produce 'creds.txt'
+  - Login with evil-winrm as fsmith
+  - user pwned
+
+# root:
+  - Looks like there's another user on the box 'svc_loanmgr'
+  - No interesting privs that we have
+  - winPEAS for some enumeration
+    - Found creds for svc_loanmgr
+    - Can evil-winrm as them -> privesc #1
+  - winPEAS shows that we have access to dpapi keys
+  - Use impacket secretsdump.py to grab the hashes
+    - ```./secretsdump.py -just-dc-ntlm egotisticalbank/svc_loanmgr@10.10.10.175```
+  - I can't believe I am such a fucking dumbass
+  - I spent hours trying to figure out different attack vectors and learning stuff about WindowsExp
+  - I had the hash for HOURS
+  - and ya know what
+  - evil-winrm can log u in with a FUCKING HASH
+  - who the FUCK knew that
+  - ```evil-winrm -i 10.10.10.175 -u administrator -H d9485863c1e9e05851aa40cbb4ab9dff```
+  - Alternative routes:
+    - ```psexec.py egotisticalbank.local/administrator@10.10.10.175 -hashes aad3b435b51404eeaad3b435b51404ee:d9485863c1e9e05851aa40cbb4ab9dff```
+  - root pwned

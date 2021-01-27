@@ -1,0 +1,60 @@
+# user:
+  - nmap directory for initial scans
+    - Full scan didn't find anything new
+  - Looks like ftp is open, but can't log in anonymously
+    - Also doesn't seem like the version is exploitable
+  - Website:
+    - robots.txt found 'Disallow: /admin-dir'
+    - Try to go there and get a 'permission denied'
+    - Looks like the note is from 'waldo'
+    - In the source code, you can submit a post request to the page
+    - It says it doesn't send anything, but it actually does
+  - I think it'll be something where I have to fuzz for files in that directory
+    - I also think 'waldo' will be the user I'm looking for
+    - Found 'contacts.txt' by running dirbuster looking for extensions (like .txt, .php, .xml, etc)
+    - Found 'credentials.txt' by just guessing based on the contacts.txt (I guess creds.txt, passwords.txt, etc.)
+  - Can now login to the FTP server
+    - Found a sql file and a tarball with HTML
+  - dump.sql
+    - Website uses sql to get the images path -> possible SQLi?
+  - html.tar.gz
+    - Found db creds in 'db\_admin.php'
+    - Found an admin web interface 'utility-scripts/admin\_tasks.php'
+    - Found the phpinfo
+    - In the admin\_tasks.php, it looks like we have a command injection :)
+      - `shell_exec("/opt/scripts/admin_tasks.sh $task 2>&1"))`
+      - But it's covered by an 'IF' statement -> not sure if it's vulnerable
+      - Doesn't seem to be exploitable, I played around with it quite a bit
+  - Found `http://10.10.10.187/utility-scripts/adminer.php` with gobuster looking for 'php' extensions in the 'utility-scripts' directory
+  - Running adminer 4.6.2 -> [exploit](https://medium.com/bugbountywriteup/adminer-script-results-to-pwning-server-private-bug-bounty-program-fe6d8a43fe6f)
+  - Configure mysql to enable remote connections as shown [here](https://www.cyberciti.biz/tips/how-do-i-enable-remote-access-to-mysql-database-server.html)
+  - Now can log in and load in remote files into my database
+  - If you try to just grab /etc/passwd, it doesn't work because of a base directory error
+  - I grabbed the 'adminer.php', but nothing seemed too interesting in there
+  - I tried to get '../index.php' to see if I could do a directory traversal, and it worked!
+  - In the current index.php, the password is different from the one we grabbed from the tarball with FTP
+  - So, I tried SSH'ing in as waldo with that password and it worked!
+  - user pwned
+
+# root:
+  - Did some basic privesc looking around like '/var/backups', 'sudo -l', looking into other users home directories and didn't find much of interest
+    - I ruled out 'sudo -l' prematurely because it prompted for a password, but later found that it will give you the output as long as you provide the same password for Waldo that you use to SSH with
+  - Ran linpeas to do some more enum
+  - We have a mail file '/var/mail/waldo'
+    - Looks like a cronjob to remove all files in /tmp/
+  - Found '/opt/scripts/backup.py', readable file belonging to me but not by everyone
+    - Just makes a backup of /var/www/html and puts it into /var/backups/html
+    - I can read it, but I can't run it (by itself anyways)
+    - You can invoke it by running the admin\_tasks.sh script and giving it '6' as an option
+  - If you do 'sudo -l' but give it the password you SSH'd in with, it'll show what you can run
+  - You can run the admin\_tasks.sh script with your environment variables still in tact
+  - I tried a ton of different path injection attacks, but for the most part it uses absolute paths
+  - I started to google how to use python libraries for exploitation:
+    - Found [this](https://leemendelowitz.github.io/blog/how-does-python-find-packages.html)
+    - [REMOTE] Create a 'shutil.py' file in a directory you have write access to
+    - [REMOTE] This file should contain the 'make\_archive' function, which will just call like 'os.sytem' and give you a reverse shell
+    - [LOCAL] Start a NC listener to catch the rev shell
+    - [REMOTE] From within the same directory your malicious shutil is in, run `sudo PYTHONPATH=$(pwd) /opt/scripts/admin_tasks.sh 6`
+    - This will make python look at your current directory first for a module import, and since we have a valid (although malicious) library, it will get loaded and executed
+    - backup.py runs as root, so you'll catch a root reverse shell
+  - root pwned

@@ -1,0 +1,63 @@
+# user:
+  - nmap directory for initial scans
+  - Anonymous ftp found, but no files
+  - Website running, dig around here for a bit
+    - Found a login page (http://10.10.10.180/umbraco/#/login/false?returnPath=%252Fforms)
+      - but I don't have any creds :/
+    - /intranet seems interesting, but doesn't have anything on it
+    - /install points to umbraco login
+  - Found /site\_backups in port 111 (NFS) (with `showmount -e 10.10.10.180`)
+    - Made a dedicated directory for the mount
+    - mounted it locally with `sudo mount -t nfs 10.10.10.180:/site\_backups site_backups/ -nolock` -> time for some digging
+    - Found 'Umbraco.sdf' in 'App\_Data' directory. Did some research, it's a database file :)
+      - Found a tool for Ubuntu called 'sdf' that converts these files, it has a '2text' option
+      - After that worked (kind of?) I realized I could just strings the file to find a hash
+      - Strings on it and grep for admin.
+      - Found password hash
+      - Use john+rockyou to crack
+      - Creds achieved for Umbraco login page
+  - Found another user 'ssmith@htb.local', this is probably who we're going to need to privesc to in order to get user
+  - Can upload files to the server via the 'media' tab. Maybe try an active server page reverse shell?
+    - Maybe? But I found the CVE that gave me RCE so I moved forward with that instead
+  - Umbraco 7.12.4, there's a CVE for this version for authenticated RCE
+  - Nice GitHub repo for a better CVE than the one on exploit DB [found it here](https://github.com/noraj/Umbraco-RCE/)
+  - Got RCE, but no shell yet :/ -> time to research Windows reverse shells
+  - Can ping my own box, that's a good sign right?
+  - Getting a reverse shell:
+    - Setup a listener with metasploit (exploit/multi/handler)
+    - Used msfvenom to create a .exe file that will get me a meterpreter session (www/rev.exe)
+    - Wrote a Powershell script to download and execute that file (www/rev.ps1)
+      - I did this because I wanted a meterpreter session but couldn't seem to generate a valid Powershell payload using msfvenom
+    - Set up a python SimpleHTTPServer locally to make the file available for the box to download & execute with the RCE
+    - exploit.py grabs my powershell script from my SimpleHTTPServer and runs it
+      - The script it downloads is one that downloads the .exe meterpreter payload and executes it
+      - I couldn't figure out how to download and execute the .exe file in one line, so this was my workaround
+      - I'm very new to Powershell in case you couldn't tell
+  - Give credit where credit is [due](https://stackoverflow.com/questions/47110728/powershell-download-and-run-exe-file)
+  - Now I have a meterpreter session + a full shell
+  - Go to C:\Users. The only place I can read is in 'Public'
+  - user.txt is in the Public directory (C:\Users\Public)
+  - user pwned
+
+# root:
+  - Digging around the filesystem, nothing seems too interesting yet
+  - TeamViewer is run by the Admin
+    - Version 7
+    - CVE-2019-18988
+    - Passwords are saved insecurely and can be accessed/decrypted by non-Admin users
+    - Upload this to the server (https://github.com/zaphoxx/WatchTV), run it and find password
+  - I tried to get PowerShell to escalate my privileges using my newfound password
+    - But every time I tried like 'runas' or something, it would ask for the password and not give me the chance to actually type in anything
+    - I think it's because of UAC (User Access Control) and that dialog box that pops up asking if you want to run as an Administrator in Windows machines, but I'm not 100% certain
+    - I'm really new to Powershell and this is the first Windows box I've done where some metasploit module doesn't automatically give you user+root
+  - I bugged around with TeamViewer for a long time, trying to get it to connect back to me with an RPC session
+    - I found that TeamViewer was listening on 5939 on their machine, but only from localhost
+    - So, I tried port forwarding 5939 back to 5938 (default TeamViewer port) on my machine with meterpreter
+    - I had to stop my TeamViewer daemon and change the options to allow LAN connections, that way I could use my IP address as a client id
+    - Then I used the TeamViewer app for debian to connect to localhost, but it just hung at 'connecting'
+  - Eventually, I went back to my NMAP scans to find another point of entry
+  - I logged into RPC client and found some shares that I now had access to
+  - So, I used smbclient to connect to the C$ share
+  - I tried out the creds with SMB and it worked, so I went into the Administrator's Desktop and pulled the root.txt locally
+  - I didn't get a shell because I couldn't find a point of entry, I'm excited to read some other writeups and see what I missed
+  - root (technically) pwned

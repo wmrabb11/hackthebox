@@ -1,0 +1,3 @@
+Evil-Winrm:
+  - fsmith:Thestrokes23
+  - svc_loanmgr:Moneymakestheworldgoround!

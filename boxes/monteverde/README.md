@@ -1,0 +1,40 @@
+# user:
+  - nmap directory for initial scans
+  - Looks like it's blocking our nmap -> run with -Pn instead to see what's good
+  - No open shares (for anonymous login)
+  - Domain: MEGABANK
+  - Host: MONTEVERDE
+  - Anonymous rpc
+    - Got a list of users and groups
+  - Can run an ldapsearch, but nothing like a password or anything in the results, except for just general info
+    - Like who's in what group, etc
+  - kerbrute to validate users
+  - GetNPUsers to try to grab any hashes
+    - No users have DONT_REQUIRE_PREAUTH set
+  - Try to brute force SMB logins with metasploit
+    - Consolidate the list of users to ones you KNOW have a home directory in a share; based on "ldap_search.txt"
+    - Set the option to use username as password for the brute force
+    - Found creds for SABatchJobs
+  - Shares:
+    - azure_uploads (READ ONLY) -> nothing
+    - IPC (READ ONLY) -> nothing
+    - NETLOGON (READ ONLY) -> nothing
+    - SYSVOL (READ ONLY) -> not much
+    - users$ (READ ONLY) -> password for mhope in azure.xml
+  - Can login to evil-winrm as mhope (because we found earlier that he's in Remote Management group)
+  - user pwned
+
+# root:
+  - azure.ps1 in mhope's home directory
+  - mhope is an Azure Admin
+  - It's clear that this box has something to do with Azure
+    - Based on the .Azure directory in our home directory, and the 'Azure Admin' group
+  - Start reading up on Azure and Windows -> see what we can do with this, since it's a non-standard thing to be running
+  - We know it's running powershell AD Sync (based on Program files)
+  - Found [this](https://blog.xpnsec.com/azuread-connect-for-redteam/) blog post with a powershell script to dump creds from Azure AD
+  - I was able to find a HackPlayers script that was cleaner and that I could use
+  - Upload it to the box and run
+    - `. .\Azure-ADConnect.ps1`
+    - `Azure-ADConnect -server 10.10.10.172 -db ADSync`
+  - Get the admin creds and connect with evil-winrm
+  - root pwned

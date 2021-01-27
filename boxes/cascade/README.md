@@ -1,0 +1,37 @@
+# user:
+  - nmap directory for initial scans, although it seems to block nmap by itself (so add -Pn)
+  - Found domain "cascade.local" -> add to /etc/hosts
+  - ```rpcclient -U "" cascade.local```
+    - Anonymous login successful
+  - enum4linux to produce 'enum.txt'
+  - ```ldapsearch -h 10.10.10.182 -p 389 -x -b "DC=Cascade,DC=local" -s subtree '(objectclass=*)'```
+    - to produce 'ldap_search.txt' -> found legacy password for r.thompson
+    - Can now login to SMB as r.thompson
+    - I made a 'users.txt' to show all the users found
+  - Shares (READ ONLY):
+    - Data
+    - NETLOGON
+    - print$
+    - SYSVOL
+  - ```smbclient -U r.thompson \\\\10.10.10.182\\Data```
+  - Found bytes of a password in 'IT/Temp/s.smith/VNC Install.reg', use Python to write bytes to file (w.py)
+    - Use [this](https://github.com/jeroennijhof/vncpwd) to decrypt the password
+  - We know that s.smith has Remote Management so let's try evil-winrm
+  - It works to get a shell as s.smith
+  - user pwned
+
+# root:
+  - Now we have access to the AUDIT share
+  - Found the DB file in 'audit/audit.db'
+    - In there, the LDAP table showed a base64 encoded password
+  - I googled this, and ran into a decompiled version of the underlying crypto for the 'CascAudit.exe'
+    - I could've used 'dotpeek' to do this myself
+    - When run, it'll print out the password. [here](https://dotnetfiddle.net/2RDoWz)
+  - Now you can log into evil-winrm as 'ArkSvc'
+  - Now you can see a log file, in the 'Data\IT\Logs\Ark Ad Recycle Bin' directory
+    - In it, you'll see that the 'TempAdmin' object was deleted
+  - I spent a while trying to restore this object, but turns out there's a "cascadeLegacyPwd" in the following command's output
+    - ```Get-ADObject -Filter ‘isDeleted -eq $True -and name -ne “Deleted Objects”‘ -IncludeDeletedObjects -Properties *```
+  - If you recall from the 'Data\IT\Email Archives\' meeting notes, this account was a temporary admin account that uses the same password as the normal admin
+  - So, base64 decode that password and log in as administrator
+  - root pwned

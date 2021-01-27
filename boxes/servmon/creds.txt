@@ -1,0 +1,5 @@
+SSH:
+  - Nadine:L1k3B1gBut7s@W0rk
+
+NSClient++:
+  - ew2x6SsGTxjRwXOT

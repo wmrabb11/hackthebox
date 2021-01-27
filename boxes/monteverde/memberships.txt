@@ -1,0 +1,32 @@
+# Domain Users:
+  - Administrator
+  - krbtgt
+  - AAD_987d7f2f57d2
+  - mhope
+  - SABatchJobs
+  - svc-ata
+  - svc-bexec
+  - svc-netapp
+  - dgalanos
+  - roleary
+  - smorgan
+
+# Group Policy Creatoer Owners:
+  - Administrator
+
+# Operations:
+  - smorgan
+
+# Trading:
+  - dgalanos
+
+# HelpDesk:
+  - roleary
+
+# Domain Guests:
+  - Guest
+
+# Azure Admins:
+  - Administrator
+  - AAD_987d7f2f57d2
+  - mhope
